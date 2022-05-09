@@ -6,28 +6,28 @@ let showDate = new Date(today.getFullYear(),today.getMonth(),1);
 
 const prev = () => {
     showDate.setMonth(showDate.getMonth() - 1);
-    showProcess(showDate);
+    createCalendar(showDate);
 }
 
 const next = () => {
     showDate.setMonth(showDate.getMonth() + 1);
-    showProcess(showDate);
+    createCalendar(showDate);
 }
 
-const showProcess = (date) => {
+const createCalendar = (date) => {
     let year = date.getFullYear();
     let month = date.getMonth();
     document.querySelector('#header').innerHTML = year + "年" + (month +1) + "月";
 
-    let calendar = createProcess(year,month);
+    let calendar = createTable(year,month);
     document.querySelector('#calendar').innerHTML = calendar;
 }
 
 window.onload = () => {
-    showProcess(today);
+    createCalendar(today);
 }
 
-const createProcess  = (year,month) =>{
+const createTable  = (year,month) =>{
     let calendar = "<table><tr class='dayOfWeek'>";
     for(let i = 0;i < week.length;i++){
         calendar += "<th>" + week[i] + "</th>";
